@@ -1,4 +1,4 @@
-import { getDoctrine } from "./doctrine.js";
+import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { attachCityMarkers } from "./cities-global.js";
