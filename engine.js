@@ -8,14 +8,21 @@ import { getGovernment } from "./government.js";
 // import { resolveCombat } from "./combat.js";
 // import { updateEconomy } from "./economy.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("Engine loaded");
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof L === "undefined") {
+    console.error("Leaflet (L) is not defined. Make sure leaflet.js is loaded first.");
+    return;
+  }
 
-  // Initialize map
+  // Initialize the map
   const map = L.map("map").setView([20, 0], 2);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap contributors"
   }).addTo(map);
+
+  // ...rest of your game logic
+});
+
 
   // Load and place cities
   try {
