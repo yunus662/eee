@@ -6,8 +6,8 @@ html, body {
   background: #111;
 }
 #map {
-  height: 100%;
-  width: 100%;
+  height: 100%vh;
+  width: 100%vw;
 }
 .info-box {
   position: absolute;
