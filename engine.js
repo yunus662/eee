@@ -3,7 +3,7 @@ import { loadCities, attachCityMarkers } from "./cities-global.js";
 import { logEvent } from "./notification.js";
 import { UnitTypes } from "./units.js";
 import { Doctrines } from "./doctrine.js";
-import { getGovernment } from "./government.js";
+import { Governments } from "./government.js";
 // Optional future modules
 // import { resolveCombat } from "./combat.js";
 // import { updateEconomy } from "./economy.js";
