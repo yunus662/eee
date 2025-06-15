@@ -1,5 +1,5 @@
 import { getDoctrine } from "./doctrine.js";
-import { getGovernment } from "./government.js";
+import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { attachCityMarkers } from "./cities-global.js";
 import { getCombatStats } from "./combat.js";
