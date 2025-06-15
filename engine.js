@@ -1,3 +1,4 @@
+console.log("Engine loaded");
 import { loadCities, attachCityMarkers } from "./cities-global.js";
 import { UnitTypes } from "./units.js";
 import { Doctrines } from "./doctrine.js";
