@@ -1,6 +1,6 @@
 console.log("Engine loaded");
 import { loadCities, attachCityMarkers } from "./cities-global.js";
-import { logEvent } from "./notifications.js";
+import { logEvent } from "./notification.js";
 import { Unit } from "./units.js";
 import { getDoctrine } from "./doctrine.js";
 import { getGovernment } from "./government.js";
