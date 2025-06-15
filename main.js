@@ -4,7 +4,7 @@ import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notifications.js";
 
-const map = L.map("map").setView([20, 0], 2);
+const map = L.map("map").setView([20, 0], 2); // Centered and zoom level set
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
 const infoBox = document.getElementById("infoBox");
