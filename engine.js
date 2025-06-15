@@ -1,5 +1,5 @@
 // Load Leaflet as an ES module
-import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
+import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.mjs";
 
 // Import your game modules
 import { loadCities, attachCityMarkers } from "./cities-global.js";
