@@ -9,4 +9,16 @@ export const UnitTypes = {
   DESTROYER:   { name: "Destroyer",     speed: 2, range: 3, damage: 16, defense: 10 },
   SUBMARINE:   { name: "Submarine",     speed: 1, range: 2, damage: 18, defense: 7 },
   TRANSPORT:   { name: "Transport Ship",speed: 2, range: 0, damage: 0,  defense: 2 }
+  export function createUnit(type, latlng, iconUrl) {
+  const icon = L.icon({
+    iconUrl,
+    iconSize: [32, 32],
+    className: `unit-icon ${type}`
+  });
+
+  const marker = L.marker(latlng, { icon, draggable: false }).addTo(map);
+  marker.unitType = type;
+  return marker;
+}
+
 };
