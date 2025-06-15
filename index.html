@@ -3,19 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <title>Grand Strategy Game</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
   <div id="map"></div>
-  <div id="infoBox" class="info-box">🌍 Loading global simulation...</div>
-  <img id="unit1" class="unit" src="assets/unit-icon.png" draggable="true" />
+  <div id="infoBox" class="info-box">🌍 Loading...</div>
+  <img id="unit1" class="unit" src="unit-icon.png" draggable="true" />
 
-  <!-- Leaflet Map Library -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <!-- Main Game Module -->
-  <script type="module" src="scripts/main.js"></script>
+  <!-- All Modules -->
+  <script type="module" src="units.js"></script>
+  <script type="module" src="doctrine.js"></script>
+  <script type="module" src="combat.js"></script>
+  <script type="module" src="government.js"></script>
+  <script type="module" src="economy.js"></script>
+  <script type="module" src="diplomacy.js"></script>
+  <script type="module" src="survey.js"></script>
+  <script type="module" src="notifications.js"></script>
+  <script type="module" src="cities-global.js"></script>
+  <script type="module" src="ai.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
-
