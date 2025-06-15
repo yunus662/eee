@@ -2,7 +2,6 @@ import { loadCities, attachCityMarkers } from "./cities-global.js";
 import { UnitTypes } from "./units.js";
 import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
-import { logEvent } from "./notifications.js";
 
 const map = L.map("map").setView([20, 0], 2);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
