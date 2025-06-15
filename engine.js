@@ -1,5 +1,4 @@
 console.log("Engine loaded");
-import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 import { loadCities, attachCityMarkers } from "./cities-global.js";
 import { logEvent } from "./notifications.js";
 import { Unit } from "./units.js";
@@ -7,6 +6,8 @@ import { getDoctrine } from "./doctrine.js";
 import { getGovernment } from "./government.js";
 import { resolveCombat } from "./combat.js";         // ← NEW
 import { updateEconomy, getEconomyState } from "./economy.js"; // ← NEW
+import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
+
 
 // notifications.js
 export function logEvent(message) {
