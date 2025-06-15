@@ -1,5 +1,5 @@
-import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 console.log("Engine loaded");
+import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 import { loadCities, attachCityMarkers } from "./cities-global.js";
 import { logEvent } from "./notifications.js";
 import { Unit } from "./units.js";
