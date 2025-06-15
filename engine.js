@@ -9,10 +9,12 @@ import { Governments } from "./government.js";
 // import { updateEconomy } from "./economy.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (typeof L === "undefined") {
-    console.error("Leaflet (L) is not defined. Make sure leaflet.js is loaded first.");
-    return;
-  }
+  // ... your game logic ...
+
+  const loading = document.getElementById("loading-screen");
+  if (loading) loading.style.display = "none";
+});
+
 
   // Initialize the map
   const map = L.map("map").setView([20, 0], 2);
@@ -61,4 +63,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Hide loading screen
   const loading = document.getElementById("loading-screen");
   if (loading) loading.style.display = "none";
-);
+}); // End of DOMContentLoaded
+
