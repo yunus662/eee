@@ -6,7 +6,7 @@ import { getCombatStats } from "./combat.js";
 import { createUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
-import { produceResources } from "./economy.js";
+import { TradeGoods } from "./economy.js";
 import { initAI } from "./ai.js";
 
 document.addEventListener("DOMContentLoaded", () => {
