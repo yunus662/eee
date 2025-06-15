@@ -9,10 +9,6 @@ import { updateEconomy, getEconomyState } from "./economy.js"; // ← NEW
 import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
 
-// notifications.js
-export function logEvent(message) {
-  console.log("📢 EVENT:", message);
-}
 
 
 const map = L.map("map").setView([20, 0], 2);
