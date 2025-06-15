@@ -5,7 +5,7 @@ import { attachCityMarkers } from "./cities-global.js";
 import { getCombatStats } from "./combat.js";
 import { createUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
-import { startGameClock } from "./time-engine.js";
+import { GAME_SPEED = 60 } from "./time-engine.js";
 import { TradeGoods } from "./economy.js";
 import { initAI } from "./ai.js";
 
