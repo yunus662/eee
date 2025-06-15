@@ -4,7 +4,7 @@ import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notifications.js";
 
-const map = L.map("map").setView([20, 0], 2); // Centered and zoom level set
+const map = L.map("map").setView([20, 0], 2);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
 const infoBox = document.getElementById("infoBox");
@@ -68,7 +68,27 @@ map.whenReady(() => {
   unit.style.top = `${center.y - 18}px`;
 
   // Load cities after map is ready
-  loadCities().then((cities) => attachCityMarkers(map, cities));
+  loadCities().then((cities) => {
+    attachCityMarkers(map, cities);
+
+    // Add tooltips and flags to city icons
+    setTimeout(() => {
+      document.querySelectorAll(".city-icon, .capital-icon").forEach((el) => {
+        const name = el.getAttribute("data-name");
+        if (name) {
+          const tooltip = document.createElement("div");
+          tooltip.className = "tooltip";
+          tooltip.textContent = name;
+          el.appendChild(tooltip);
+        }
+
+        const flag = document.createElement("div");
+        flag.className = "city-flag";
+        flag.style.backgroundImage = "url('flags/default.png')";
+        el.appendChild(flag);
+      });
+    }, 500);
+  });
 });
 
 // Drag unit
@@ -109,3 +129,9 @@ setInterval(() => {
     }
   }
 }, 10_000);
+
+// Optional: click sound
+document.addEventListener("click", () => {
+  const audio = document.getElementById("click-sound");
+  if (audio) audio.play();
+});
