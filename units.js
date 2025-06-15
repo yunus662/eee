@@ -9,6 +9,10 @@ export const UnitTypes = {
   DESTROYER:   { name: "Destroyer",     speed: 2, range: 3, damage: 16, defense: 10 },
   SUBMARINE:   { name: "Submarine",     speed: 1, range: 2, damage: 18, defense: 7 },
   TRANSPORT:   { name: "Transport Ship",speed: 2, range: 0, damage: 0,  defense: 2 }
+  const warship = createUnit("warship", [0, 30], "icons/warship.png");
+const tradeShip = createUnit("trade", [0, 40], "icons/trade-ship.png");
+const helicopter = createUnit("helicopter", [5, 35], "icons/helicopter.png");
+  
   export function createUnit(type, latlng, iconUrl) {
   const icon = L.icon({
     iconUrl,
