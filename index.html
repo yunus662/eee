@@ -5,11 +5,24 @@
   <title>Grand Strategy Game</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  defer
+></script>
+
 </head>
 <body>
   <div id="map"></div>
-  <div id="infoBox" class="info-box">🌍 Loading...</div>
-  <img id="unit1" class="unit" src="unit-icon.png" draggable="true" />
+<div id="infoBox" class="info-box"></div>
+<div id="unit1" class="unit" draggable="true">
+  <div class="tooltip">Player Unit</div>
+</div>
+<audio id="click-sound" src="click.mp3" preload="auto"></audio>
+
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
