@@ -1,8 +1,12 @@
 console.log("Engine loaded");
 import { loadCities, attachCityMarkers } from "./cities-global.js";
-import { UnitTypes } from "./units.js";
-import { Doctrines } from "./doctrine.js";
-import { Governments } from "./government.js";
+import { logEvent } from "./notifications.js";
+import { Unit } from "./units.js";
+import { getDoctrine } from "./doctrine.js";
+import { getGovernment } from "./government.js";
+import { resolveCombat } from "./combat.js";         // ← NEW
+import { updateEconomy, getEconomyState } from "./economy.js"; // ← NEW
+
 // notifications.js
 export function logEvent(message) {
   console.log("📢 EVENT:", message);
