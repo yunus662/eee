@@ -20,6 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
     attachCityMarkers(map);
   }
 
+  import { createUnit } from "./units.js";
+
+// Assuming `map` is already initialized above this point
+
+const infantry = createUnit("infantry", [10, 20], "icons/infantry.png", map);
+const tank = createUnit("tank", [12, 22], "icons/tank.png", map);
+const artillery = createUnit("artillery", [14, 24], "icons/artillery.png", map);
+const antiAir = createUnit("anti_air", [16, 26], "icons/anti-air.png", map);
+const helicopter = createUnit("helicopter", [5, 35], "icons/helicopter.png", map);
+const fighter = createUnit("fighter", [18, 28], "icons/fighter.png", map);
+const bomber = createUnit("bomber", [20, 30], "icons/bomber.png", map);
+const destroyer = createUnit("destroyer", [0, 25], "icons/warship.png", map);
+const submarine = createUnit("submarine", [0, 27], "icons/submarine.png", map);
+const transport = createUnit("transport", [0, 29], "icons/transport.png", map);
+const tradeShip = createUnit("trade", [0, 40], "icons/trade-ship.png", map);
+
+
   // Fog of war
   const { reveal } = createFogLayer(map);
 
