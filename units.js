@@ -1,6 +1,7 @@
 // units.js
 
-import L from "leaflet";
+import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
+
 import { logEvent } from "./notification.js";
 import { revealFogAt } from "./fog.js";
 
