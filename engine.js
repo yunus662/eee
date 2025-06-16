@@ -9,6 +9,8 @@ import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources, TradeGoods } from "./econ-fixed.js";
 import { aiNations } from "./ai.js";
+import { initSurvey } from "./survey.js";
+import { initBuildings } from "./building.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
