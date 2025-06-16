@@ -1,27 +1,59 @@
-// Define unit types
-export const UnitTypes = {
-  INFANTRY:   { name: "Infantry",      speed: 2, range: 1, damage: 5,  defense: 4 },
-  TANK:       { name: "Tank",          speed: 3, range: 2, damage: 10, defense: 8 },
-  ARTILLERY:  { name: "Artillery",     speed: 1, range: 4, damage: 15, defense: 3 },
-  ANTI_AIR:   { name: "Anti-Air",      speed: 1, range: 2, damage: 8,  defense: 6 },
-  HELICOPTER: { name: "Helicopter",    speed: 4, range: 2, damage: 12, defense: 5 },
-  FIGHTER:    { name: "Fighter Jet",   speed: 5, range: 4, damage: 14, defense: 6 },
-  BOMBER:     { name: "Bomber",        speed: 3, range: 6, damage: 20, defense: 4 },
-  DESTROYER:  { name: "Destroyer",     speed: 2, range: 3, damage: 16, defense: 10 },
-  SUBMARINE:  { name: "Submarine",     speed: 1, range: 2, damage: 18, defense: 7 },
-  TRANSPORT:  { name: "Transport Ship",speed: 2, range: 0, damage: 0,  defense: 2 }
-};
+// units.js
 
+import L from "leaflet";
+import { logEvent } from "./notification.js";
+import { revealFogAt } from "./fog.js";
 
-// Create unit icon and marker
-export function createUnit(type, latlng, iconUrl) {
+export const allUnits = [];
+
+export function createUnit(type, latlng, iconUrl, map, isAI = false) {
   const icon = L.icon({
     iconUrl,
     iconSize: [32, 32],
-    className: `unit-icon ${type}`
+    iconAnchor: [16, 16]
   });
 
-  const marker = L.marker(latlng, { icon, draggable: false }).addTo(map);
+  const marker = L.marker(latlng, {
+    icon,
+    draggable: false
+  }).addTo(map);
+
   marker.unitType = type;
+  marker.health = 100;
+  marker.maxHealth = 100;
+  marker.isAlive = true;
+  marker.isAI = isAI;
+
+  marker.bindTooltip(`${type} (HP: ${marker.health})`, {
+    permanent: false,
+    direction: "top"
+  });
+
+  allUnits.push(marker);
   return marker;
 }
+
+export function moveUnitTo(unit, destination, type, map) {
+  if (!unit || !destination || !map || !unit.isAlive) return;
+
+  const duration = 1000;
+  const steps = 20;
+  const [startLat, startLng] = [unit.getLatLng().lat, unit.getLatLng().lng];
+  const [endLat, endLng] = destination;
+  let step = 0;
+
+  const interval = setInterval(() => {
+    step++;
+    const lat = startLat + ((endLat - startLat) * step) / steps;
+    const lng = startLng + ((endLng - startLng) * step) / steps;
+    unit.setLatLng([lat, lng]);
+
+    revealFogAt([lat, lng]);
+
+    if (step >= steps) {
+      clearInterval(interval);
+      logEvent(`✅ ${type} arrived at destination.`);
+    }
+  }, duration / steps);
+}
+
