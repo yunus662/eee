@@ -2,7 +2,7 @@ import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { LoadCities } from "./cities-global.js";
-import { getCombatStats } from "./combat.js";
+import { resolveCombat } from "./combat.js";
 import { createUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { StartGameClock } from "./time-engine.js";
