@@ -12,6 +12,7 @@ export const UnitTypes = {
   TRANSPORT:  { name: "Transport Ship",speed: 2, range: 0, damage: 0,  defense: 2 }
 };
 
+
 // Create unit icon and marker
 export function createUnit(type, latlng, iconUrl) {
   const icon = L.icon({
