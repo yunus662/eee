@@ -19,6 +19,6 @@ export function produceResources() {
   economy.materials += 3;
   economy.money += 10;
 }
-
+  logEvent("💰 Economy system initialized."); 
   }));
 }
