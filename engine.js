@@ -10,7 +10,7 @@ import { startGameClock } from "./time-engine.js";
 import { produceResources, TradeGoods } from "./econ-fixed.js";
 import { aiNations } from "./ai.js";
 import { discoverResources } from "./survey.js";
-import { initBuildings } from "./building.js";
+import { buildings } from "./building.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
