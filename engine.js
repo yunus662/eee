@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }).addTo(map);
 
   // 2. Spawn units
-  const infantry = createUnit("infantry", [-1.3, 36.8], "icons/infantry.png", map); // Nairobi
+  const infantry = createUnit("infantry", [-1.3, 36.8], "icons/infantry.png", map); 
   const aircraft = createUnit("aircraft", [30, 0], "icons/aircraft.png", map);
   const warship = createUnit("warship", [0, 30], "icons/warship.png", map);
   const tradeShip = createUnit("trade", [0, 40], "icons/trade-ship.png", map);
