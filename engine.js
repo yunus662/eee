@@ -20,21 +20,53 @@ document.addEventListener("DOMContentLoaded", () => {
     attachCityMarkers(map);
   }
 
-  import { createUnit } from "./units.js";
+  // 1. Import modules
+import { createUnit } from "./units.js";
+import { cities } from "./cities-global.js";
+// (Import other modules as needed)
 
-// Assuming `map` is already initialized above this point
+// 2. Wait for DOM to load
+document.addEventListener("DOMContentLoaded", () => {
 
-const infantry = createUnit("infantry", [10, 20], "icons/infantry.png", map);
-const tank = createUnit("tank", [12, 22], "icons/tank.png", map);
-const artillery = createUnit("artillery", [14, 24], "icons/artillery.png", map);
-const antiAir = createUnit("anti_air", [16, 26], "icons/anti-air.png", map);
-const helicopter = createUnit("helicopter", [5, 35], "icons/helicopter.png", map);
-const fighter = createUnit("fighter", [18, 28], "icons/fighter.png", map);
-const bomber = createUnit("bomber", [20, 30], "icons/bomber.png", map);
-const destroyer = createUnit("destroyer", [0, 25], "icons/warship.png", map);
-const submarine = createUnit("submarine", [0, 27], "icons/submarine.png", map);
-const transport = createUnit("transport", [0, 29], "icons/transport.png", map);
-const tradeShip = createUnit("trade", [0, 40], "icons/trade-ship.png", map);
+  // 3. Initialize the map
+  const map = L.map("map").setView([0, 0], 2);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap contributors"
+  }).addTo(map);
+
+  // 4. Spawn units AFTER map is defined
+  // Spawn all unit types
+createUnit("infantry", [10, 20], "icons/infantry.png", map);
+createUnit("tank", [12, 22], "icons/tank.png", map);
+createUnit("artillery", [14, 24], "icons/artillery.png", map);
+createUnit("anti_air", [16, 26], "icons/anti-air.png", map);
+createUnit("helicopter", [5, 35], "icons/helicopter.png", map);
+createUnit("fighter", [18, 28], "icons/fighter.png", map);
+createUnit("bomber", [20, 30], "icons/bomber.png", map);
+createUnit("destroyer", [0, 25], "icons/warship.png", map);
+createUnit("submarine", [0, 27], "icons/submarine.png", map);
+createUnit("transport", [0, 29], "icons/transport.png", map);
+createUnit("trade", [0, 40], "icons/trade-ship.png", map);
+
+  // Add more units here...
+
+  // 5. Visualize cities
+  cities.forEach(city => {
+    const marker = L.marker(city.latlng).addTo(map);
+    marker.bindTooltip(`${city.name} (${city.nation})`, { permanent: false });
+  });
+
+  // 6. Hide loading screen
+  const loading = document.getElementById("loading-screen");
+  if (loading) loading.style.display = "none";
+
+  // 7. Start game systems (fog, AI, economy, etc.)
+  // fog.init(map);
+  // ai.spawn(map);
+  // etc.
+
+});
+
 
 
   // Fog of war
