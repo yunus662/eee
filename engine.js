@@ -1,5 +1,5 @@
 import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
-import { createUnit, moveUnitTo } from "./units.js";
+import { createUnit } from "./units.js";
 import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
