@@ -3,7 +3,7 @@ import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { cities } from "./cities-global.js";
 import { resolveCombat } from "./combat.js";
-import { createUnit, moveUnitTo } from "./units.js";
+import { UnitTypes } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources } from "./economy.js";
