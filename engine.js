@@ -7,7 +7,7 @@ import { createUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources } from "./economy.js";
-import { initAI } from "./ai.js";
+import { aiNations } from "./ai.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize the map
