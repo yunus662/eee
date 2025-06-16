@@ -1,3 +1,4 @@
+import { logEvent } from "./notification.js";
 export const TradeGoods = ["Fuel", "Supplies", "Rare Metals", "Consumer Goods"];
 
 export function generateMarketOffers() {
