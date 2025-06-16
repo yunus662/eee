@@ -4,7 +4,7 @@ import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { cities } from "./cities-global.js";
 import { resolveCombat } from "./combat.js";
-import { UnitTypes } from "./units.js";
+import { allUnits } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources, TradeGoods } from "./econ-fixed.js";
