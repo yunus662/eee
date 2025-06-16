@@ -2,7 +2,7 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 import { Doctrines } from "./doctrine.js";
 import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
-import { cities } from "./cities-global.js";
+import { loadCities } from "./cities-global.js";
 import { resolveCombat } from "./combat.js";
 import { allUnits } from "./units.js";
 import { createFogLayer } from "./fog.js";
