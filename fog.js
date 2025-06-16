@@ -1,21 +1,24 @@
+// fog.js
+
+let fogLayer;
+let revealed = new Set();
+
 export function createFogLayer(map) {
-  const fog = L.layerGroup().addTo(map);
-  const revealed = new Set();
+  fogLayer = L.tileLayer("", {
+    pane: "overlayPane"
+  }).addTo(map);
 
-  function reveal(latlng, radius = 2) {
-    const key = `${latlng.lat.toFixed(2)}:${latlng.lng.toFixed(2)}`;
-    if (revealed.has(key)) return;
-    revealed.add(key);
-
-    const circle = L.circle(latlng, {
-      radius: radius * 100000,
-      color: "#000",
-      fillColor: "#000",
-      fillOpacity: 0.6,
-      interactive: false
-    });
-    fog.addLayer(circle);
-  }
-
-  return { fog, reveal };
+  return {
+    reveal: (latlng) => revealFogAt(latlng)
+  };
 }
+
+export function revealFogAt([lat, lng]) {
+  const key = `${lat.toFixed(2)},${lng.toFixed(2)}`;
+  if (!revealed.has(key)) {
+    revealed.add(key);
+    // Optional: add visual fog-clearing logic here
+    console.log(`🌫️ Fog revealed at ${key}`);
+  }
+}
+
