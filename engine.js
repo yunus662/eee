@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 9. Hide loading screen
-  const loading = document.getElementById("loading-screen");
-  if (loading) loading.style.display = "none";
-});
+ document.getElementById("loading-screen").style.display = "none";
+
 
