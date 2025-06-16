@@ -1,9 +1,12 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
 #map {
   height: 100vh;
-  width: 100vw;
-  position: relative;
-  z-index: 1;
+  width: 100%;
 }
+
 
 .info-box {
   position: absolute;
