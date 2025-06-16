@@ -1,5 +1,5 @@
-import { Doctrines, getDoctrine } from "./doctrine.js";
-import { Governments, getGovernment } from "./government.js";
+import { Doctrines } from "./doctrine.js";
+import { Governments } from "./government.js";
 import { logEvent } from "./notification.js";
 import { cities } from "./cities-global.js";
 import { resolveCombat } from "./combat.js";
