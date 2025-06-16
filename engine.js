@@ -9,7 +9,7 @@ import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources, TradeGoods } from "./econ-fixed.js";
 import { aiNations } from "./ai.js";
-import * as L from "./libs/leaflet.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize the map
