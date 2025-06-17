@@ -192,9 +192,9 @@ export const fullCountryData = [
   { name: "Vietnam", population: 99114145, gdp: 409.0, color: "#d8bfd8" },
   { name: "Yemen", population: 34449825, gdp: 24.9, color: "#ff1493" },
   { name: "Zambia", population: 20442839, gdp: 29.6, color: "#7b68ee" },
-  { name: "Zimbabwe", population: 16483000, gdp: 28.4, color: "#9acd32" }
+  { name: "Zimbabwe", population: 16483000, gdp: 28.4, color: "#9acd32" },
 ];
 
 
 
-];
+
