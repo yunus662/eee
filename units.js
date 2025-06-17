@@ -59,4 +59,4 @@ export function moveUnitTo(unit, destination, type, map) {
   // Future: Animate movement or adjust behavior based on type
 }
 
-}
+
