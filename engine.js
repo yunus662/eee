@@ -88,10 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   map.on("click", (e) => {
-    if (selectedUnit) {
-      const dest = [e.latlng.lat, e.latlng.lng];
-      moveUnitTo(selectedUnit, dest, selectedUnit.unitType, map);
-      logEvent(`🛰️ ${selectedUnit.unit
+  if (selectedUnit) {
+    const dest = [e.latlng.lat, e.latlng.lng];
+    moveUnitTo(selectedUnit, dest, selectedUnit.unitType, map);
+    logEvent(`🛰️ ${selectedUnit.unitType} moving to [${dest[0].toFixed(2)}, ${dest[1].toFixed(2)}].`);
+    selectedUnit = null;
+  }
+});
+
 
   // 6. Doctrine and government
   const doctrine = getDoctrine("aggressive");
