@@ -1,6 +1,6 @@
 import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
-import { Doctrines, getDoctrine } from "./doctrine.js";
-import { Governments, getGovernment } from "./government.js";
+import { Doctrines, } from "./doctrine.js";
+import { Governments, } from "./government.js";
 import { logEvent } from "./notification.js";
 import { resolveCombat } from "./combat.js";
 import { buyUnit, moveUnitTo } from "./units.js";
