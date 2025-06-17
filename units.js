@@ -45,9 +45,15 @@ export function createUnit(type, latlng, iconUrl, map) {
   });
   
 export function moveUnitTo(unit, destination, type, map) {
+  if (!unit || typeof unit.setLatLng !== "function") {
+    console.warn("Invalid unit passed to moveUnitTo:", unit);
+    return;
+  }
+  
   unit.setLatLng(destination);
-  // Optionally add animation or logic based on unit type
+  // Future: Animate movement or adjust behavior based on type
 }
+
 
   const marker = L.marker(latlng, { icon }).addTo(map);
   marker.unitType = type;
