@@ -1,26 +1,28 @@
-export async function loadCities() {
-  const res = await fetch("data/cities.json");
-  const cities = await res.json();
-  return cities;
-}
+// cities-global.js
 
-export function attachCityMarkers(map, cities) {
+export const cityIcon = L.divIcon({
+  className: "city-icon",
+  html: "🏙️",
+  iconSize: [10, 10]
+});
+
+export function addCitiesToMap(cities, map) {
+  const markers = [];
+
   cities.forEach(city => {
-    const icon = L.divIcon({
-      className: city.type === "capital" ? "capital-icon" : "city-icon",
-      iconSize: [22, 22]
-    });
+    const marker = L.marker(city.latlng, { icon: cityIcon }).addTo(map);
+    marker.bindTooltip(`${city.name} (${city.nation})`, { permanent: false });
+    marker._icon.style.display = "none"; // hidden until zoomed in
+    markers.push(marker);
+  });
 
-    const marker = L.marker([city.lat, city.lon], { icon }).addTo(map);
-
-    marker.on("click", () => {
-      const pop = Number(city.population).toLocaleString();
-      const info = `🏙️ <strong>${city.name}</strong><br>
-        Country: ${city.country}<br>
-        Type: ${city.type}<br>
-        Population: ${pop}`;
-      const infoBox = document.getElementById("infoBox");
-      infoBox.innerHTML = info;
+  map.on("zoomend", () => {
+    const zoom = map.getZoom();
+    markers.forEach(marker => {
+      if (marker._icon) {
+        marker._icon.style.display = zoom >= 5 ? "block" : "none";
+      }
     });
   });
 }
+
