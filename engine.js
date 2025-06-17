@@ -11,6 +11,31 @@ import { produceResources, TradeGoods } from "./econ-fixed.js";
 import { allUnitsAI } from "./ai.js";
 import { discoverResources } from "./survey.js";
 import { buildings } from "./buildings.js";
+import { initCountrySystem } from "./packed-features.js";
+import { fullCountryData } from "./countries.js";
+
+fetch("countries.geo.json")
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: feature => {
+        const match = fullCountryData.find(c => c.name === feature.properties.name);
+        return {
+          color: match ? match.color : "#888",
+          weight: 1,
+          fillOpacity: 0.5
+        };
+      }
+    }).addTo(map);
+  });
+initCountrySystem(map);
+import {
+  initCountrySystem,
+  upgradeInfrastructure,
+  declareWar,
+  makePeace,
+  showNationPortfolio
+} from "./packed-features.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
