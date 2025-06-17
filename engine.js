@@ -20,46 +20,38 @@ import {
 } from "./packed-features.js";
 import { fullCountryData } from "./countries.js";
 
-// 🗺️ Create the Leaflet map
-const map = L.map("map").setView([0, 0], 2);
-
-// 🌍 Load GeoJSON borders and apply country colors
-fetch("countries.geo.json")
-  .then(res => res.json())
-  .then(data => {
-    L.geoJSON(data, {
-      style: feature => {
-        const match = fullCountryData.find(c => c.name === feature.properties.name);
-        return {
-          color: match ? match.color : "#888",
-          weight: 1,
-          fillOpacity: 0.5
-        };
-      }
-    }).addTo(map);
-  });
-
-// 🌐 Initialize the country system
-initCountrySystem(map);
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Initialize the map
   const map = L.map("map").setView([0, 0], 2);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap contributors"
   }).addTo(map);
 
+  // 🌍 Load GeoJSON borders and apply country colors
+  fetch("countries.geo.json")
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: feature => {
+          const match = fullCountryData.find(c => c.name === feature.properties.name);
+          return {
+            color: match ? match.color : "#888",
+            weight: 1,
+            fillOpacity: 0.5
+          };
+        }
+      }).addTo(map);
+    });
+
+  // 🌐 Initialize the country system
+  initCountrySystem(map);
+
   // 2. Spawn units
-  const infantry = createUnit("infantry", [-1.3, 36.8], "icons/infantry.png", map); 
+  const infantry = createUnit("infantry", [-1.3, 36.8], "icons/infantry.png", map);
   const aircraft = createUnit("aircraft", [30, 0], "icons/aircraft.png", map);
   const warship = createUnit("warship", [0, 30], "icons/warship.png", map);
   const tradeShip = createUnit("trade", [0, 40], "icons/trade-ship.png", map);
   const helicopter = createUnit("helicopter", [5, 35], "icons/helicopter.png", map);
 
-  // Optional: spawn all other unit types
   createUnit("tank", [12, 22], "icons/tank.png", map);
   createUnit("artillery", [14, 24], "icons/artillery.png", map);
   createUnit("anti_air", [16, 26], "icons/anti-air.png", map);
@@ -122,7 +114,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 9. Hide loading screen
- document.getElementById("loading-screen").style.display = "none";
-
-
+  document.getElementById("loading-screen").style.display = "none";
 });
