@@ -153,7 +153,7 @@ export const fullCountryData = [
   { name: "Serbia", population: 6753125, gdp: 69.7, color: "#c71585" },
   { name: "Seychelles", population: 100060, gdp: 1.6, color: "#bdb76b" },
   { name: "Sierra Leone", population: 8817487, gdp: 4.1, color: "#f5f5dc" },
-  { name: "Singapore", population: 5946000, gdp: 507.0, color: "#6495ed" }
+  { name: "Singapore", population: 5946000, gdp: 507.0, color: "#6495ed" },
   { name: "Slovakia", population: 5456362, gdp: 136.0, color: "#f0f8ff" },
   { name: "Slovenia", population: 2118654, gdp: 74.0, color: "#ffe4e1" },
   { name: "Solomon Islands", population: 740424, gdp: 1.5, color: "#7fffd4" },
