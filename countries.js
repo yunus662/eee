@@ -103,8 +103,8 @@ export const fullCountryData = [
   { name: "Malawi", population: 21489862, gdp: 13.1, color: "#5f9ea0" },
   { name: "Malaysia", population: 33826798, gdp: 447.0, color: "#d8bfd8" },
   { name: "Maldives", population: 521021, gdp: 6.2, color: "#bc8f8f" },
-  { name: "Mali", population: 22930450, gdp: 19.4, color: "#00ff00" }
-   { name: "Malta", population: 519562, gdp: 19.3, color: "#98fb98" },
+  { name: "Mali", population: 22930450, gdp: 19.4, color: "#00ff00" },
+  { name: "Malta", population: 519562, gdp: 19.3, color: "#98fb98" },
   { name: "Marshall Islands", population: 42508, gdp: 0.3, color: "#ffe4b5" },
   { name: "Mauritania", population: 4782700, gdp: 10.6, color: "#3cb371" },
   { name: "Mauritius", population: 1271768, gdp: 14.2, color: "#8a2be2" },
@@ -195,6 +195,6 @@ export const fullCountryData = [
   { name: "Zimbabwe", population: 16483000, gdp: 28.4, color: "#9acd32" }
 ];
 
-];
+
 
 ];
