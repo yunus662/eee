@@ -11,8 +11,6 @@ import { produceResources, TradeGoods } from "./econ-fixed.js";
 import { allUnitsAI } from "./ai.js";
 import { discoverResources } from "./survey.js";
 import { buildings } from "./buildings.js";
-import { initCountrySystem } from "./packed-features.js";
-import { fullCountryData } from "./countries.js";
 import {
   initCountrySystem,
   upgradeInfrastructure,
@@ -20,10 +18,12 @@ import {
   makePeace,
   showNationPortfolio
 } from "./packed-features.js";
+import { fullCountryData } from "./countries.js";
 
-// your map creation logic here, e.g.:
+// 🗺️ Create the Leaflet map
 const map = L.map("map").setView([0, 0], 2);
 
+// 🌍 Load GeoJSON borders and apply country colors
 fetch("countries.geo.json")
   .then(res => res.json())
   .then(data => {
@@ -39,7 +39,9 @@ fetch("countries.geo.json")
     }).addTo(map);
   });
 
+// 🌐 Initialize the country system
 initCountrySystem(map);
+
 
 
 
