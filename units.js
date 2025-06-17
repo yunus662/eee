@@ -43,6 +43,11 @@ export function createUnit(type, latlng, iconUrl, map) {
     iconSize: [32, 32],
     iconAnchor: [16, 16]
   });
+  
+export function moveUnitTo(unit, destination, type, map) {
+  unit.setLatLng(destination);
+  // Optionally add animation or logic based on unit type
+}
 
   const marker = L.marker(latlng, { icon }).addTo(map);
   marker.unitType = type;
