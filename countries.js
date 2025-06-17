@@ -56,8 +56,8 @@ export const fullCountryData = [
   { name: "Eritrea", population: 3718963, gdp: 2.1, color: "#f5deb3" },
   { name: "Estonia", population: 1326535, gdp: 52.0, color: "#adff2f" },
   { name: "Eswatini", population: 1200000, gdp: 4.7, color: "#ffefd5" },
-  { name: "Ethiopia", population: 126527060, gdp: 111.0, color: "#8b4513" }
-    { name: "Fiji", population: 896445, gdp: 4.4, color: "#00bfff" },
+  { name: "Ethiopia", population: 126527060, gdp: 111.0, color: "#8b4513" },
+  { name: "Fiji", population: 896445, gdp: 4.4, color: "#00bfff" },
   { name: "Finland", population: 5540739, gdp: 300.0, color: "#008b8b" },
   { name: "France", population: 67081000, gdp: 3020.0, color: "#000080" },
   { name: "Gabon", population: 2346035, gdp: 18.3, color: "#3cb371" },
