@@ -1,7 +1,6 @@
 // packed-features.js
 import { fullCountryData } from "./countries.js";
 import { logEvent } from "./notification.js";
-import { createUnit } from "./units.js";
 
 let currentNation = null;
 const nations = {};
@@ -19,7 +18,8 @@ export function initCountrySystem(map) {
       dailyIncome: income,
       infraLevel: 1,
       atWarWith: [],
-      cities: Array.from({ length: cityCount }, (_, i) => `City ${i + 1}`)
+      cities: Array.from({ length: cityCount }, (_, i) => `City ${i + 1}`),
+      units: []
     };
   });
 
@@ -40,6 +40,7 @@ function createNationMenu() {
     opt.textContent = c.name;
     menu.appendChild(opt);
   });
+
   const go = document.createElement("button");
   go.textContent = "Start Game";
   go.onclick = () => {
@@ -103,6 +104,20 @@ export function showNationPortfolio(nationName) {
   `;
 
   document.body.appendChild(box);
+}
+
+export function getNationData(name) {
+  return nations[name];
+}
+
+export function getAllCities() {
+  return Object.values(nations).flatMap(n =>
+    n.cities.map((c, i) => ({
+      name: c,
+      nation: n.name,
+      latlng: [Math.random() * 140 - 70, Math.random() * 360 - 180] // placeholder
+    }))
+  );
 }
 
 function estimateIncome(gdp) {
