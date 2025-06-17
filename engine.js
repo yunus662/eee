@@ -13,6 +13,16 @@ import { discoverResources } from "./survey.js";
 import { buildings } from "./buildings.js";
 import { initCountrySystem } from "./packed-features.js";
 import { fullCountryData } from "./countries.js";
+import {
+  initCountrySystem,
+  upgradeInfrastructure,
+  declareWar,
+  makePeace,
+  showNationPortfolio
+} from "./packed-features.js";
+
+// your map creation logic here, e.g.:
+const map = L.map("map").setView([0, 0], 2);
 
 fetch("countries.geo.json")
   .then(res => res.json())
@@ -28,14 +38,9 @@ fetch("countries.geo.json")
       }
     }).addTo(map);
   });
+
 initCountrySystem(map);
-import {
-  initCountrySystem,
-  upgradeInfrastructure,
-  declareWar,
-  makePeace,
-  showNationPortfolio
-} from "./packed-features.js";
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
