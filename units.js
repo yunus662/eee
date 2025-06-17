@@ -59,8 +59,4 @@ export function moveUnitTo(unit, destination, type, map) {
   // Future: Animate movement or adjust behavior based on type
 }
 
-
-  const marker = L.marker(latlng, { icon }).addTo(map);
-  marker.unitType = type;
-  return marker;
 }
