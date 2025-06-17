@@ -1,10 +1,9 @@
 import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
-import { Doctrines } from "./doctrine.js";
-import { Governments } from "./government.js";
+import { Doctrines, getDoctrine } from "./doctrine.js";
+import { Governments, getGovernment } from "./government.js";
 import { logEvent } from "./notification.js";
-import { loadCities } from "./cities-global.js";
 import { resolveCombat } from "./combat.js";
-import { buyUnit } from "./units.js";
+import { buyUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { produceResources, TradeGoods } from "./econ-fixed.js";
@@ -17,7 +16,8 @@ import {
   declareWar,
   makePeace,
   showNationPortfolio,
-  getAllCities
+  getAllCities,
+  getNationData
 } from "./packed-features.js";
 import { fullCountryData } from "./countries.js";
 
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     attribution: "© OpenStreetMap contributors"
   }).addTo(map);
 
-  // 🌍 Load GeoJSON borders and apply country colors
   fetch("countries.geo.json")
     .then(res => res.json())
     .then(data => {
@@ -43,10 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }).addTo(map);
     });
 
-  // 🌐 Initialize the country system
   initCountrySystem(map);
 
-  // 2. Buy and spawn units for a player nation (e.g., "United States")
   const playerNation = "United States";
   const infantry = buyUnit("infantry", [-1.3, 36.8], map, playerNation);
   const aircraft = buyUnit("aircraft", [30, 0], map, playerNation);
@@ -63,14 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
   buyUnit("submarine", [0, 27], map, playerNation);
   buyUnit("transport", [0, 29], map, playerNation);
 
-  // 3. Visualize cities
   const cities = getAllCities();
   cities.forEach(city => {
     const marker = L.marker(city.latlng).addTo(map);
     marker.bindTooltip(`${city.name} (${city.nation})`, { permanent: false });
   });
 
-  // 4. Fog of war
   const { reveal } = createFogLayer(map);
   if (infantry) {
     setInterval(() => {
@@ -78,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 
-  // 5. Unit selection and movement
   const clickSound = new Audio("sounds/click.mp3");
   clickSound.volume = 0.5;
   let selectedUnit = null;
@@ -97,10 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (selectedUnit) {
       const dest = [e.latlng.lat, e.latlng.lng];
       moveUnitTo(selectedUnit, dest, selectedUnit.unitType, map);
-      logEvent(`🛰️ ${selectedUnit.unitType} moving to [${dest[0].toFixed(2)}, ${dest[1].toFixed(2)}].`);
-      selectedUnit = null;
-    }
-  });
+      logEvent(`🛰️ ${selectedUnit.unit
 
   // 6. Doctrine and government
   const doctrine = getDoctrine("aggressive");
