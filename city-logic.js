@@ -1,4 +1,4 @@
-import cities from 'data/cities.json' assert { type: 'json' };
+import cities from './data/cities.json' assert { type: 'json' };
 
 /** Tiers and rules */
 const cityRules = {
