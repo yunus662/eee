@@ -832,4 +832,185 @@
         {"name": "Estelí", "lat": 13.0917, "lng": -86.3528}
       ]
     },
-    
+ [
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "cities": [
+      { "name": "Bujumbura", "lat": -3.3822, "lng": 29.3644 },
+      { "name": "Gitega", "lat": -3.4264, "lng": 29.9306 }
+    ]
+  },
+  {
+    "name": "Cape Verde",
+    "code": "CV",
+    "cities": [
+      { "name": "Praia", "lat": 14.9331, "lng": -23.5133 },
+      { "name": "Mindelo", "lat": 16.8901, "lng": -24.9804 }
+    ]
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "cities": [
+      { "name": "Bangui", "lat": 4.3947, "lng": 18.5582 }
+    ]
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "cities": [
+      { "name": "Moroni", "lat": -11.6986, "lng": 43.2544 }
+    ]
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "cities": [
+      { "name": "Djibouti", "lat": 11.588, "lng": 43.145 },
+      { "name": "Ali Sabieh", "lat": 11.1558, "lng": 42.7125 }
+    ]
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "cities": [
+      { "name": "Malabo", "lat": 3.75, "lng": 8.7833 },
+      { "name": "Bata", "lat": 1.8658, "lng": 9.7707 }
+    ]
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "cities": [
+      { "name": "Asmara", "lat": 15.3333, "lng": 38.9333 },
+      { "name": "Massawa", "lat": 15.6081, "lng": 39.4746 }
+    ]
+  },
+  {
+    "name": "Eswatini",
+    "code": "SZ",
+    "cities": [
+      { "name": "Mbabane", "lat": -26.3167, "lng": 31.1333 },
+      { "name": "Manzini", "lat": -26.4833, "lng": 31.3667 }
+    ]
+  },
+]
+[
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "cities": [
+      { "name": "Malé", "lat": 4.1755, "lng": 73.5093 }
+    ]
+  },
+  {
+    "name": "Marshall Islands",
+    "code": "MH",
+    "cities": [
+      { "name": "Majuro", "lat": 7.0897, "lng": 171.3803 }
+    ]
+  },
+  {
+    "name": "Micronesia",
+    "code": "FM",
+    "cities": [
+      { "name": "Palikir", "lat": 6.9248, "lng": 158.1611 }
+    ]
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "cities": [
+      { "name": "Monaco", "lat": 43.7333, "lng": 7.4167 }
+    ]
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "cities": [
+      { "name": "Yaren", "lat": -0.5477, "lng": 166.9209 }
+    ]
+  },
+  {
+    "name": "Palau",
+    "code": "PW",
+    "cities": [
+      { "name": "Ngerulmud", "lat": 7.5006, "lng": 134.6243 }
+    ]
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "cities": [
+      { "name": "San Marino", "lat": 43.9333, "lng": 12.45 }
+    ]
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "cities": [
+      { "name": "Victoria", "lat": -4.6167, "lng": 55.45 }
+    ]
+  },
+  [
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "cities": [
+      { "name": "Honiara", "lat": -9.4319, "lng": 159.9563 }
+    ]
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "cities": [
+      { "name": "Juba", "lat": 4.8517, "lng": 31.5825 }
+    ]
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "code": "ST",
+    "cities": [
+      { "name": "São Tomé", "lat": 0.3365, "lng": 6.7273 }
+    ]
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TL",
+    "cities": [
+      { "name": "Dili", "lat": -8.5586, "lng": 125.5736 }
+    ]
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "cities": [
+      { "name": "Nukuʻalofa", "lat": -21.1394, "lng": -175.2018 }
+    ]
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "cities": [
+      { "name": "Funafuti", "lat": -8.5243, "lng": 179.194 }
+    ]
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "cities": [
+      { "name": "Port Vila", "lat": -17.7333, "lng": 168.3167 }
+    ]
+  },
+  {
+    "name": "Vatican City",
+    "code": "VA",
+    "cities": [
+      { "name": "Vatican City", "lat": 41.9029, "lng": 12.4534 }
+    ]
+  }
+]
+
+]
+
