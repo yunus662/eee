@@ -1,6 +1,6 @@
 import cities from './cities.json' assert { type: 'json' };
 
-/** Tier rule map */
+/** Tiers and rules */
 const cityRules = {
   rich: {
     countries: [ "US", "DE", "JP", "GB", "FR", "CA", "AU", "KR", "NL", "SE", "CH", "NO", "FI", "AT", "BE", "IE", "SG", "IS", "LU", "DK", "NZ", "AE", "QA", "SA", "IL", "TW", "CZ", "SI", "EE", "LT", "LV", "MT", "CY" ],
@@ -16,7 +16,7 @@ const cityRules = {
   }
 };
 
-/** Per-city customizations */
+/** Per-city customization */
 const cityOverrides = {
   "Berlin": {
     owner: "Germany",
@@ -37,7 +37,6 @@ const cityOverrides = {
   }
 };
 
-/** Utility: get rule block by country code */
 function getRulesForCode(code) {
   for (const tier of Object.values(cityRules)) {
     if (tier.countries.includes(code)) return tier.rules;
@@ -45,46 +44,42 @@ function getRulesForCode(code) {
   return { infrastructureLevel: 1, hasRealRoads: false, roadDensity: 1, economicMultiplier: 1.0 };
 }
 
-/** Utility: get ownership override */
 function getOwner(cityName, fallback) {
   return cityOverrides[cityName]?.owner || fallback;
 }
 
-/** Utility: get upgrades override */
 function getUpgrade(cityName) {
   return cityOverrides[cityName]?.upgrades || null;
 }
 
-/** API: Set new owner dynamically */
+/** 🧭 Dynamic API */
 export function setCityOwner(cityName, newOwner) {
   if (!cityOverrides[cityName]) cityOverrides[cityName] = {};
   cityOverrides[cityName].owner = newOwner;
 }
 
-/** API: Set upgrades dynamically */
-export function setCityUpgrades(cityName, upgrade) {
+export function setCityUpgrades(cityName, upgrades) {
   if (!cityOverrides[cityName]) cityOverrides[cityName] = {};
-  cityOverrides[cityName].upgrades = upgrade;
+  cityOverrides[cityName].upgrades = upgrades;
 }
 
-/** API: List cities by controlling nation */
 export function getCitiesByOwner(nation) {
   return getCitiesWithRules()
     .flatMap(c => c.cities)
     .filter(city => city.owner === nation);
 }
 
-/** MAIN: Returns full enriched city structure */
+/** 🧩 Main export: full enriched data */
 export function getCitiesWithRules() {
   return cities.map(country => {
     const rules = getRulesForCode(country.code);
     return {
       ...country,
-      cities: country.cities.map(raw => {
-        const owner = getOwner(raw.name, country.name);
-        const upgrades = getUpgrade(raw.name);
+      cities: country.cities.map(city => {
+        const upgrades = getUpgrade(city.name);
+        const owner = getOwner(city.name, country.name);
         return {
-          ...raw,
+          ...city,
           ...rules,
           ...upgrades,
           owner,
@@ -95,3 +90,8 @@ export function getCitiesWithRules() {
   });
 }
 
+/** 🎛️ New: Panel data hook */
+export function getCityPanelData(cityName) {
+  const matched = getCitiesWithRules().flatMap(c => c.cities).find(c => c.name === cityName);
+  return matched || null;
+}
