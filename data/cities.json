@@ -1,4 +1,7 @@
- [
+ {
+  "countries": [ /* array of countries */ ]
+}
+
     {
       "name": "United States",
       "code": "US",
@@ -1006,4 +1009,7 @@
       { "name": "Vatican City", "lat": 41.9029, "lng": 12.4534 }
     ] 
   }
-]
+    }
+  ]
+}
+
