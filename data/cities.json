@@ -998,14 +998,12 @@
       { "name": "Port Vila", "lat": -17.7333, "lng": 168.3167 }
     ]
   },
-  {
+    {
     "name": "Vatican City",
     "code": "VA",
     "cities": [
       { "name": "Vatican City", "lat": 41.9029, "lng": 12.4534 }
-    ] 
+    ]
   }
-    }
-  ]
-}
+]
 
