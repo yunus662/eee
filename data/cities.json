@@ -30,7 +30,7 @@
         {"name": "Memphis", "lat": 35.1495, "lng": -90.0490},
         {"name": "Las Vegas", "lat": 36.1699, "lng": -115.1398}
       ]
-    },
+    }
     {
       "name": "China",
       "code": "CN",
