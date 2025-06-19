@@ -1,6 +1,5 @@
 export default [
-  {
-{
+    {
       "name": "United States",
       "code": "US",
       "cities": [
