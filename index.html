@@ -90,7 +90,8 @@
       document.body.appendChild(soloBanner);
     }
 
-    const socket = io();
+    const socket = io("https://3db21b63-ee56-43d9-877f-e5b68b462df6-00-3s3v6c139aq4b.spock.repl.co/"); // ✅ replace with your real CodeSandbox domain
+
 
     socket.on("connect", () => {
       console.log(`🛰 Connected to server as ${socket.id}`);
