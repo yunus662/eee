@@ -7,7 +7,7 @@ import { buyUnit, moveUnitTo } from "./units.js";
 import { createFogLayer } from "./fog.js";
 import { startGameClock } from "./time-engine.js";
 import { economyManager } from "./econ-fixed.js";
-import { allUnitsAI, initAI } from "./ai.js";
+import { allUnitsAI } from "./ai.js";
 import { discoverResources } from "./survey.js";
 import { buildings } from "./buildings.js";
 import {
