@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bestdominion Lobby</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 2em;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0f1c;
+      color: #eee;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    input, button {
+      padding: 0.7em;
+      margin: 0.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      width: 200px;
+    }
+    button {
+      background: #2196f3;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1976d2;
+    }
+    #lobby {
+      margin-top: 2em;
+    }
+    a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Bestdominion</h1>
+  <p>Conquer the world. Forge alliances. Make history.</p>
+
+  <div id="lobby">
+    <button onclick="createGame()">🎮 Start New Game</button><br/>
+    <input id="join-code" placeholder="Enter Lobby Code" />
+    <button onclick="joinGame()">🔗 Join Game</button>
+  </div>
+
+  <p style="margin-top: 2em;">
+    <a href="/Conqueror-games/forum.html">🗨️ Visit the Community Forum</a>
+  </p>
+
+  <script>
+    const base = "/Conqueror-games";
+
+    function createGame() {
+      const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+      window.location.href = `${base}/game.html?lobby=${code}`;
+    }
+
+    function joinGame() {
+      const code = document.getElementById("join-code").value.trim().toUpperCase();
+      if (code) window.location.href = `${base}/game.html?lobby=${code}`;
+    }
+  </script>
+</body>
+</html>
