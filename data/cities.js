@@ -1006,5 +1006,5 @@ export default [
       { "name": "Vatican City", "lat": 41.9029, "lng": 12.4534 }
     ]
   }
-];
+]
 
