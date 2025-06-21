@@ -1,109 +1,138 @@
 // econ-fixed.js
 
-// Import our notification helper (using dynamic import so that dependencies aren’t tangled at startup).
-// (You can also import it statically if you prefer, as long as your module loader setup supports it.)
-import { logEvent } from './notifications.js';
+import { logEvent } from "./notification.js";
 
-/**
- * EconomyManager simulates an advanced economic system.
- * It models resource production, consumption, and market fluctuations.
- */
 export class EconomyManager {
   constructor() {
-    // Initial resource stocks.
     this.resources = {
       gold: 1000,
       food: 500,
       wood: 300,
+      iron: 200,
+      copper: 150,
+      uranium: 20,
+      oil: 300,
+      fuel: 150,
+      diamonds: 5,
+      supplies: 200,
+      tickets: 0
     };
 
-    // Market prices and inflation.
-    this.market = {
-      goldPrice: 1.0,
-      foodPrice: 1.0,
-      woodPrice: 1.0,
-      inflationRate: 0.02, // base inflation rate per tick
+    this.productionRates = {
+      food: 5,
+      wood: 3,
+      iron: 2,
+      copper: 1.5,
+      uranium: 0.1,
+      oil: 2,
+      fuel: 1,
+      diamonds: 0.02,
+      supplies: 3
     };
 
-    // Base production and consumption rates per tick.
-    this.production = {
-      food: 10,
-      wood: 5,
+    this.consumptionRates = {
+      food: 3,
+      wood: 1.5,
+      fuel: 0.8,
+      supplies: 1
     };
 
-    this.consumption = {
-      food: 8,
-      wood: 2,
+    this.prices = {
+      gold: 1,
+      food: 1,
+      wood: 1,
+      iron: 1,
+      copper: 1,
+      uranium: 5,
+      oil: 2,
+      fuel: 2.5,
+      diamonds: 20,
+      supplies: 1.2
     };
 
-    // Multipliers to simulate temporary boosts or slowdowns.
-    this.multipliers = {
-      productionBoost: 1.0,
-      consumptionFactor: 1.0,
-    };
-
-    // Time management for the simulation loop.
-    this.tickInterval = 1000; // 1 second per simulation tick (adjust as needed)
-    this.lastTick = Date.now();
+    this.inflationRate = 0.01;
+    this.tickInterval = 1000;
   }
 
-  // Log an economic event using our notification system.
-  logEconomyEvent(message, importance = 1) {
-    logEvent(message, { type: 'info', duration: 5000, importance });
-  }
-
-  // Simulate one tick of the economy.
   tick() {
-    const now = Date.now();
-    const delta = now - this.lastTick;
-    this.lastTick = now;
+    for (const res in this.productionRates) {
+      const amount = this.productionRates[res];
+      this.resources[res] += amount;
+    }
 
-    // Food: Increase by production and decrease by consumption.
-    const foodProduced = this.production.food * this.multipliers.productionBoost;
-    const foodConsumed = this.consumption.food * this.multipliers.consumptionFactor;
-    this.resources.food += foodProduced - foodConsumed;
+    for (const res in this.consumptionRates) {
+      const amount = this.consumptionRates[res];
+      this.resources[res] = Math.max(0, this.resources[res] - amount);
+    }
 
-    // Wood: Similarly process wood production and consumption.
-    const woodProduced = this.production.wood * this.multipliers.productionBoost;
-    const woodConsumed = this.consumption.wood * this.multipliers.consumptionFactor;
-    this.resources.wood += woodProduced - woodConsumed;
+    this.handleTradeBalance();
+    this.updateMarketPrices();
+    this.checkTicketEarnings();
+  }
 
-    // Gold changes according to a simple trade surplus/deficit model.
-    const tradeBalance = (foodProduced - foodConsumed) * 0.1 +
-                         (woodProduced - woodConsumed) * 0.2;
-    this.resources.gold += tradeBalance;
+  handleTradeBalance() {
+    const surplus = this.resources.food + this.resources.wood + this.resources.iron + this.resources.oil;
+    const deficit = this.resources.supplies < 50 || this.resources.fuel < 30;
 
-    // Update market prices based on resource availability.
-    // The less of a resource, the higher its price (and vice versa).
-    this.market.foodPrice = 1.0 + (500 - this.resources.food) / 1000;
-    this.market.woodPrice = 1.0 + (300 - this.resources.wood) / 1000;
-    // Simulate inflation: gold becomes relatively more expensive over time.
-    this.market.goldPrice *= (1 + this.market.inflationRate * (delta / 1000));
-
-    // Log an economic event if the trade balance is dramatically positive or negative.
-    if (Math.abs(tradeBalance) > 5) {
-      this.logEconomyEvent(`Economic shift: trade balance of ${tradeBalance.toFixed(2)} units.`, 2);
+    if (surplus > 1000 && !deficit) {
+      const goldGain = surplus * 0.002;
+      this.resources.gold += goldGain;
+      logEvent(`💰 Trade surplus generated $${goldGain.toFixed(2)} gold`);
     }
   }
 
-  // Start the economy simulation running continuously.
-  startSimulation() {
-    this.simulationInterval = setInterval(() => this.tick(), this.tickInterval);
+  updateMarketPrices() {
+    for (const res in this.prices) {
+      const scarcity = Math.max(0.01, 1000 - this.resources[res]);
+      this.prices[res] = 1 + scarcity / 1000 + Math.random() * 0.1;
+    }
+    this.prices.diamonds = 20 + Math.random() * 5;
+    this.prices.uranium = 5 + Math.random();
   }
 
-  // Stop the simulation.
-  stopSimulation() {
-    if (this.simulationInterval) clearInterval(this.simulationInterval);
+  checkTicketEarnings() {
+    if (this.resources.diamonds > 10) {
+      this.resources.tickets += 1;
+      this.resources.diamonds -= 10;
+      logEvent("🎟️ Bonus ticket earned from excess diamond holdings!", { type: "success", importance: 2 });
+    }
   }
 
-  // Retrieve current economic status for display or further processing.
-  getStatus() {
-    return {
-      resources: this.resources,
-      market: this.market,
-    };
+  start() {
+    setInterval(() => this.tick(), this.tickInterval);
+  }
+
+  getResourceStats() {
+    return this.resources;
+  }
+
+  getPrice(resource) {
+    return this.prices[resource] || 1;
+  }
+
+  purchase(resource, quantity, ticketMode = false) {
+    const totalCost = this.getPrice(resource) * quantity;
+    if (ticketMode) {
+      const ticketCost = Math.ceil(totalCost / 5);
+      if (this.resources.tickets >= ticketCost) {
+        this.resources.tickets -= ticketCost;
+        this.resources[resource] = (this.resources[resource] || 0) + quantity;
+        logEvent(`🎟️ Purchased ${quantity} ${resource} with ${ticketCost} ticket(s)!`, { type: "success" });
+        return true;
+      } else {
+        logEvent(`❌ Not enough tickets to buy ${resource}`, { type: "error" });
+        return false;
+      }
+    } else if (this.resources.gold >= totalCost) {
+      this.resources.gold -= totalCost;
+      this.resources[resource] = (this.resources[resource] || 0) + quantity;
+      logEvent(`🛒 Purchased ${quantity} ${resource} for $${totalCost.toFixed(2)} gold`);
+      return true;
+    } else {
+      logEvent(`❌ Not enough gold to buy ${resource}`, { type: "error" });
+      return false;
+    }
   }
 }
 
-// Create a singleton instance for easy access.
 export const economyManager = new EconomyManager();
