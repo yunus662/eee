@@ -2,7 +2,7 @@
 
 import { logEvent } from "./notification.js";
 import { createUnit, moveUnitTo } from "./units.js";
-import { revealFogAt } from "./fog.js";
+import { createFogLayer } from "./fog.js";
 
 export const allUnitsAI = [];
 
