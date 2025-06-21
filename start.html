@@ -35,12 +35,17 @@
     button:hover {
       background: #1976d2;
     }
-    #lobby {
+    #lobby, #lobby-list {
       margin-top: 2em;
     }
     a {
       color: #90caf9;
       text-decoration: none;
+    }
+    #lobby-list button {
+      display: block;
+      margin: 0.3em auto;
+      background: #444;
     }
   </style>
 </head>
@@ -54,11 +59,15 @@
     <button onclick="joinGame()">🔗 Join Game</button>
   </div>
 
+  <div id="lobby-list"></div>
+
   <p style="margin-top: 2em;">
     <a href="/Conqueror-games/forum.html">🗨️ Visit the Community Forum</a>
   </p>
 
-  <script>
+  <script type="module">
+    import { getActiveUserCount } from "./data/user-tracker.js";
+
     const base = "/Conqueror-games";
 
     function createGame() {
@@ -70,6 +79,28 @@
       const code = document.getElementById("join-code").value.trim().toUpperCase();
       if (code) window.location.href = `${base}/game.html?lobby=${code}`;
     }
+
+    function spawnLobbies() {
+      const count = getActiveUserCount();
+      const numLobbies = Math.max(1, Math.ceil(count / 4));
+      const lobbyList = Array.from({ length: numLobbies }, (_, i) => `ROOM-${i + 1}`);
+      localStorage.setItem("availableLobbies", JSON.stringify(lobbyList));
+      renderLobbies(lobbyList);
+    }
+
+    function renderLobbies(list) {
+      const div = document.getElementById("lobby-list");
+      div.innerHTML = "<h3>Available Lobbies</h3>";
+      list.forEach(code => {
+        const btn = document.createElement("button");
+        btn.textContent = `Join ${code}`;
+        btn.onclick = () => window.location.href = `${base}/game.html?lobby=${code}`;
+        div.appendChild(btn);
+      });
+    }
+
+    spawnLobbies();
+    setInterval(spawnLobbies, 15000);
   </script>
 </body>
 </html>
